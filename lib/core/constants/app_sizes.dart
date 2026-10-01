@@ -174,7 +174,6 @@ abstract final class AppDimensions {
   static const double blobSmallSize = 200;
   static const double blobLargeOffset = -80;
   static const double blobSmallOffset = -60;
-  static const double blobBlurSigma = 60;
 
   // ---------------------------------------------------------------------------
   // Animation offsets

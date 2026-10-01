@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:notes_app/core/config/constants/app_sizes.dart';
+import 'package:notes_app/core/constants/app_sizes.dart';
 
 /// Device size category derived from screen width.
 enum ScreenType { phone, tablet, desktop }
