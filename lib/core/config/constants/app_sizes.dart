@@ -100,6 +100,21 @@ abstract final class AppDimensions {
   static const double iconLg = 32;
 
   // ---------------------------------------------------------------------------
+  // Typography
+  // ---------------------------------------------------------------------------
+  static const double fontXs = 12;
+  static const double fontSm = 14;
+  static const double fontMd = 16;
+  static const double fontLg = 18;
+  static const double fontXl = 22;
+  static const double fontXxl = 28;
+  static const double fontDisplay = 36;
+
+  static const double lineHeightTight = 1.25;
+  static const double lineHeightNormal = 1.4;
+  static const double lineHeightRelaxed = 1.6;
+
+  // ---------------------------------------------------------------------------
   // Components
   // ---------------------------------------------------------------------------
   static const double buttonHeight = 52;
