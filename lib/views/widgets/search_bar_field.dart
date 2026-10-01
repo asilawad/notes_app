@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../constants/app_colors.dart';
-import '../../constants/app_dimensions.dart';
-import '../../constants/app_durations.dart';
-import '../../constants/app_strings.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_durations.dart';
 import '../../core/constants/app_sizes.dart';

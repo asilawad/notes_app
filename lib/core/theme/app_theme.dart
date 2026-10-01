@@ -103,26 +103,7 @@ abstract final class AppTheme {
           borderRadius: AppDimensions.borderRadiusXl,
         ),
       ),
-      chipTheme: ChipThemeData(
-        backgroundColor: AppColors.glassFill,
-        selectedColor: AppColors.primary,
-        disabledColor: AppColors.backgroundAlt,
-        labelStyle: textTheme.labelMedium,
-        secondaryLabelStyle: textTheme.labelMedium?.copyWith(
-          color: AppColors.textOnPrimary,
-        ),
-        padding: AppDimensions.chipPadding,
-        elevation: AppDimensions.elevationNone,
-        pressElevation: AppDimensions.elevationNone,
-        showCheckmark: false,
-        side: const BorderSide(
-          color: AppColors.glassBorderStrong,
-          width: AppDimensions.glassBorderWidth,
-        ),
-        shape: const RoundedRectangleBorder(
-          borderRadius: AppDimensions.borderRadiusPill,
-        ),
-      ),
+
       dialogTheme: DialogThemeData(
         backgroundColor: AppColors.surface,
         surfaceTintColor: AppColors.transparent,

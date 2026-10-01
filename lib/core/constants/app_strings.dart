@@ -100,7 +100,6 @@ abstract final class AppStrings {
   static const String noteCreated = 'Note saved';
   static const String noteUpdated = 'Note updated';
   static const String noteDeleted = 'Note deleted';
-  static const String successTitle = 'Success';
   static const String errorTitle = 'Something went wrong';
   static const String genericError = 'Something went wrong. Please try again.';
   static const String loadError = 'We could not load your notes.';
