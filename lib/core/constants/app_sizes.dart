@@ -176,6 +176,8 @@ abstract final class AppDimensions {
   static const double splashLogoSize = 120;
   static const double emptyStateImageSize = 180;
   static const double emptyStateIconSize = 64;
+  static const double errorStateCircleSize = 120;
+  static const double errorStateIconSize = 48;
 
   // ---------------------------------------------------------------------------
   // Decorative background blobs
