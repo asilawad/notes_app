@@ -53,6 +53,10 @@ abstract final class AppDurations {
   // ---------------------------------------------------------------------------
   static const Duration snackbar = Duration(seconds: 3);
 
+  /// How long the form waits for Firestore to confirm a save before treating
+  /// it as queued locally (offline). See `NoteFormController.save`.
+  static const Duration saveTimeout = Duration(seconds: 3);
+
   /// Longer so the user has time to tap Undo after deleting.
   static const Duration undoSnackbar = Duration(seconds: 4);
 }
