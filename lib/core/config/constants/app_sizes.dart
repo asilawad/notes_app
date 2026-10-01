@@ -169,4 +169,8 @@ abstract final class AppDimensions {
 
   /// Reference design width used by the responsive scaling helper.
   static const double designReferenceWidth = 390;
+
+  /// Limits for the responsive scale factor, so UI never shrinks or grows too much.
+  static const double minScaleFactor = 0.85;
+  static const double maxScaleFactor = 1.3;
 }
