@@ -65,6 +65,16 @@ abstract final class AppStrings {
   static String updatedOn(String date) => 'Updated $date';
 
   // ---------------------------------------------------------------------------
+  // Relative dates
+  // ---------------------------------------------------------------------------
+  static const String justNow = 'Just now';
+  static const String yesterday = 'Yesterday';
+  static String minutesAgo(int minutes) => '$minutes min ago';
+  static String hoursAgo(int hours) =>
+      hours == 1 ? '1 hour ago' : '$hours hours ago';
+  static String daysAgo(int days) => '$days days ago';
+
+  // ---------------------------------------------------------------------------
   // Delete
   // ---------------------------------------------------------------------------
   static const String deleteDialogTitle = 'Delete note?';
