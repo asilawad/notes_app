@@ -25,6 +25,7 @@ class GlassCard extends StatelessWidget {
     this.enableBlur = true,
     this.strong = false,
     this.onTap,
+    this.onLongPress,
   });
 
   final Widget child;
@@ -50,6 +51,9 @@ class GlassCard extends StatelessWidget {
   /// Makes the card tappable with an ink ripple.
   final VoidCallback? onTap;
 
+  /// Long-press callback (for example to delete a note).
+  final VoidCallback? onLongPress;
+
   @override
   Widget build(BuildContext context) {
     final GlassTheme glass = context.glass;
@@ -69,6 +73,7 @@ class GlassCard extends StatelessWidget {
         ),
         child: InkWell(
           onTap: onTap,
+          onLongPress: onLongPress,
           borderRadius: radius,
           child: Padding(padding: padding, child: child),
         ),

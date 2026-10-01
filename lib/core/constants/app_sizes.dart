@@ -47,6 +47,10 @@ abstract final class AppDimensions {
     bottom: fabListInset,
   );
 
+  static const EdgeInsets horizontalPadding = EdgeInsets.symmetric(
+    horizontal: spaceMd,
+  );
+
   /// Extra bottom space so the last list item is not hidden by the FAB.
   static const double fabListInset = 96;
 
