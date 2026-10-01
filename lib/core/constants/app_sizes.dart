@@ -178,6 +178,7 @@ abstract final class AppDimensions {
   static const double emptyStateIconSize = 64;
   static const double errorStateCircleSize = 120;
   static const double errorStateIconSize = 48;
+  static const double splashFallbackIconSize = 56;
 
   // ---------------------------------------------------------------------------
   // Decorative background blobs
