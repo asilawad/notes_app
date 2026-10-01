@@ -100,6 +100,14 @@ abstract final class AppDimensions {
   static const double iconLg = 32;
 
   // ---------------------------------------------------------------------------
+  // Elevation & borders
+  // ---------------------------------------------------------------------------
+  static const double elevationNone = 0;
+  static const double elevationLow = 4;
+  static const double borderWidth = 1;
+  static const double borderWidthFocused = 1.5;
+
+  // ---------------------------------------------------------------------------
   // Typography
   // ---------------------------------------------------------------------------
   static const double fontXs = 12;
@@ -126,6 +134,7 @@ abstract final class AppDimensions {
   static const double categoryBadgeHeight = 24;
   static const double progressIndicatorSize = 28;
   static const double progressIndicatorStroke = 3;
+  static const double buttonMinWidth = 120;
 
   // ---------------------------------------------------------------------------
   // Note tiles

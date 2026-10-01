@@ -69,6 +69,14 @@ abstract final class AppColors {
   static const Color info = primary;
 
   // ---------------------------------------------------------------------------
+  // Utility
+  // ---------------------------------------------------------------------------
+  static const Color transparent = Color(0x00000000);
+
+  /// Text selection highlight (sky blue, ~30%).
+  static const Color textSelection = Color(0x4D38BDF8);
+
+  // ---------------------------------------------------------------------------
   // Note categories (solid color + soft tint for badges/chips)
   // ---------------------------------------------------------------------------
   static const Color categoryPersonal = primaryLight;
