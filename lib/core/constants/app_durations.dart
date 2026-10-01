@@ -40,6 +40,7 @@ abstract final class AppDurations {
   static const Duration layoutSwitch = Duration(milliseconds: 300);
   static const Duration fabAnimation = Duration(milliseconds: 250);
   static const Duration fadeSwitcher = Duration(milliseconds: 250);
+  static const Duration skeletonPulse = Duration(milliseconds: 900);
 
   // ---------------------------------------------------------------------------
   // Input

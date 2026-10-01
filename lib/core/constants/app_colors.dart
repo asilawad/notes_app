@@ -73,6 +73,9 @@ abstract final class AppColors {
   // ---------------------------------------------------------------------------
   static const Color transparent = Color(0x00000000);
 
+  /// Placeholder bars in loading skeletons (slate, ~12%).
+  static const Color skeleton = Color(0x1F94A3B8);
+
   /// Text selection highlight (sky blue, ~30%).
   static const Color textSelection = Color(0x4D38BDF8);
 

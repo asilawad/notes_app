@@ -44,6 +44,7 @@ abstract final class AppStrings {
   static const String noResultsMessage =
       'Try a different search or clear your filters.';
   static const String clearFilters = 'Clear filters';
+  static const String loadingNotes = 'Loading notes...';
 
   // ---------------------------------------------------------------------------
   // Note form (create & edit)

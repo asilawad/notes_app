@@ -147,6 +147,15 @@ abstract final class AppDimensions {
   static const double noteGridSpacing = spaceSm;
   static const double noteListSpacing = spaceSm;
   static const double skeletonTileHeight = 120;
+  static const int skeletonItemCount = 6;
+  static const double skeletonLineHeight = 14;
+  static const double skeletonBadgeWidth = 72;
+  static const double skeletonTitleWidthFactor = 0.6;
+  static const double skeletonLineWidthFactor = 1;
+  static const double skeletonShortLineWidthFactor = 0.75;
+
+  /// Lowest opacity of the pulsing skeleton (it pulses between this and 1).
+  static const double skeletonMinOpacity = 0.5;
 
   // ---------------------------------------------------------------------------
   // Note form
