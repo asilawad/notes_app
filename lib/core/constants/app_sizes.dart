@@ -130,7 +130,6 @@ abstract final class AppDimensions {
   // Components
   // ---------------------------------------------------------------------------
   static const double buttonHeight = 52;
-  static const double textFieldHeight = 56;
   static const double searchBarHeight = 52;
   static const double chipHeight = 36;
   static const double fabSize = 60;

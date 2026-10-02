@@ -258,7 +258,7 @@ class HomeView extends GetView<HomeController> {
       padding: AppDimensions.listBottomPadding,
       keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
       itemCount: notes.length,
-      findChildIndexCallback: findIndex,
+      findItemIndexCallback: findIndex,
       separatorBuilder: (BuildContext context, int index) =>
           const SizedBox(height: AppDimensions.noteListSpacing),
       itemBuilder: (BuildContext context, int index) => buildTile(index),

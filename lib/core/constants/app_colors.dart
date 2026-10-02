@@ -65,8 +65,6 @@ abstract final class AppColors {
   // Feedback
   // ---------------------------------------------------------------------------
   static const Color error = accent;
-  static const Color warning = secondary;
-  static const Color info = primary;
   static const Color errorTint = Color(0x26EF4444);
 
   // ---------------------------------------------------------------------------

@@ -63,5 +63,4 @@ abstract final class AppDurations {
 abstract final class AppCurves {
   static const Curve standard = Curves.easeInOut;
   static const Curve entrance = Curves.easeOutCubic;
-  static const Curve emphasized = Curves.easeOutBack;
 }
