@@ -60,7 +60,7 @@ abstract final class AppStrings {
   // ---------------------------------------------------------------------------
   // Note details
   // ---------------------------------------------------------------------------
-  static const String detailsTitle = 'Note';
+  static const String detailsTitle = 'Note Details';
   static const String untitledNote = 'Untitled';
   static String createdOn(String date) => 'Created $date';
   static String updatedOn(String date) => 'Updated $date';

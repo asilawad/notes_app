@@ -99,10 +99,15 @@ class NoteDetailController extends GetxController {
   }
 
   /// The note was deleted elsewhere (or never existed): tell the user and
-  /// leave the screen.
+  /// leave the screen. If this screen is the first route (for example after
+  /// a browser refresh), there is nothing to go back to, so open home.
   void _handleMissingNote() {
     AppSnackbar.error(AppStrings.noteNotFound);
-    Get.back<void>();
+    if (Get.key.currentState?.canPop() ?? false) {
+      Get.back<void>();
+    } else {
+      Get.offAllNamed<void>(AppRoutes.home);
+    }
   }
 
   /// Re-subscribes after a failed update (the error view's retry button).

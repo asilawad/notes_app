@@ -67,6 +67,8 @@ abstract final class AppColors {
   static const Color error = accent;
   static const Color errorTint = Color(0x26EF4444);
 
+  /// Soft crimson border for danger buttons (crimson, ~35%).
+  static const Color errorBorder = Color(0x59EF4444);
   // ---------------------------------------------------------------------------
   // Utility
   // ---------------------------------------------------------------------------
@@ -77,20 +79,19 @@ abstract final class AppColors {
 
   /// Text selection highlight (sky blue, ~30%).
   static const Color textSelection = Color(0x4D38BDF8);
-
   // ---------------------------------------------------------------------------
   // Note categories (solid color + soft tint for badges/chips)
   // ---------------------------------------------------------------------------
-  static const Color categoryPersonal = primaryLight;
-  static const Color categoryWork = warmBrown;
+  static const Color categoryPersonal = primary;
+  static const Color categoryWork = Color.fromARGB(255, 179, 78, 20);
   static const Color categoryIdeas = secondary;
   static const Color categoryImportant = accent;
 
-  static const Color categoryPersonalTint = Color(0x2638BDF8);
-  static const Color categoryWorkTint = Color(0x2678350F);
-  static const Color categoryIdeasTint = Color(0x26F59E0B);
-  static const Color categoryImportantTint = Color(0x26EF4444);
-
+  // Tints at ~25% opacity (were ~15%), so badges read clearly.
+  static const Color categoryPersonalTint = Color(0x4038BDF8);
+  static const Color categoryWorkTint = Color.fromARGB(64, 250, 115, 37);
+  static const Color categoryIdeasTint = Color(0x40F59E0B);
+  static const Color categoryImportantTint = Color(0x40EF4444);
   // ---------------------------------------------------------------------------
   // Gradients
   // ---------------------------------------------------------------------------

@@ -78,9 +78,9 @@ class HomeView extends GetView<HomeController> {
                   onChanged: controller.onSearchChanged,
                 ),
               ),
-              const SizedBox(height: AppDimensions.spaceSm),
+              const SizedBox(height: AppDimensions.spaceMd),
               _buildFilters(),
-              const SizedBox(height: AppDimensions.spaceXs),
+              const SizedBox(height: AppDimensions.spaceMd),
               Expanded(child: _buildContent(context)),
             ],
           ),
@@ -152,7 +152,7 @@ class HomeView extends GetView<HomeController> {
             padding: AppDimensions.horizontalPadding,
           ),
         ),
-        const SizedBox(height: AppDimensions.spaceXs),
+        const SizedBox(height: AppDimensions.spaceSm),
         Obx(
           () => FilterChipGroup<DateRangeFilter>(
             items: _dateFilterItems,

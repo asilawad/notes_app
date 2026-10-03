@@ -138,6 +138,8 @@ abstract final class AppDimensions {
   static const double progressIndicatorSize = 28;
   static const double progressIndicatorStroke = 3;
   static const double buttonMinWidth = 120;
+  static const double iconButtonSize = 44;
+  static const double iconButtonIconSize = 20;
 
   // ---------------------------------------------------------------------------
   // Note tiles
@@ -146,7 +148,7 @@ abstract final class AppDimensions {
   static const int noteListPreviewMaxLines = 3;
   static const int noteGridTitleMaxLines = 2;
   static const int noteGridPreviewMaxLines = 5;
-  static const double noteGridAspectRatio = 0.85;
+  static const double noteGridAspectRatio = 1.0;
   static const double noteGridSpacing = spaceSm;
   static const double noteListSpacing = spaceSm;
   static const double skeletonTileHeight = 120;

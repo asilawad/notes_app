@@ -9,6 +9,7 @@ import '../../data/models/note_category.dart';
 import '../widgets/app_button.dart';
 import '../widgets/custom_text_field.dart';
 import '../widgets/filter_chip_group.dart';
+import '../widgets/glass_icon_button.dart';
 import '../widgets/gradient_background.dart';
 
 /// Category selector options, built once from the fixed category set.
@@ -64,10 +65,10 @@ class NoteFormView extends GetView<NoteFormController> {
       child: Row(
         children: <Widget>[
           Obx(
-            () => IconButton(
-              onPressed: controller.isSaving.value ? null : controller.cancel,
+            () => GlassIconButton(
+              icon: Icons.arrow_back_rounded,
               tooltip: AppStrings.tooltipBack,
-              icon: const Icon(Icons.arrow_back_rounded),
+              onPressed: controller.isSaving.value ? null : controller.cancel,
             ),
           ),
           const SizedBox(width: AppDimensions.spaceXs),

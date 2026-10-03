@@ -63,6 +63,7 @@ abstract final class AppSnackbar {
         SnackBar(
           duration: duration,
           action: action,
+          persist: false,
           content: Row(
             children: <Widget>[
               Icon(icon, color: iconColor, size: AppDimensions.iconSm),

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/note_detail_controller.dart';
-import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_sizes.dart';
 import '../../core/constants/app_strings.dart';
 import '../../core/theme/glass_theme.dart';
@@ -14,6 +13,7 @@ import '../widgets/app_button.dart';
 import '../widgets/category_badge.dart';
 import '../widgets/error_state_view.dart';
 import '../widgets/glass_card.dart';
+import '../widgets/glass_icon_button.dart';
 import '../widgets/gradient_background.dart';
 
 /// Note details screen: a clean reading layout with the category, the
@@ -50,30 +50,29 @@ class NoteDetailView extends GetView<NoteDetailController> {
       padding: AppDimensions.screenPadding,
       child: Row(
         children: <Widget>[
-          IconButton(
-            onPressed: Get.back<void>,
+          GlassIconButton(
+            icon: Icons.arrow_back_rounded,
             tooltip: AppStrings.tooltipBack,
-            icon: const Icon(Icons.arrow_back_rounded),
+            onPressed: () => Get.back<void>(),
           ),
-          const SizedBox(width: AppDimensions.spaceXs),
+          const SizedBox(width: AppDimensions.spaceSm),
           Expanded(
             child: Text(
               AppStrings.detailsTitle,
               style: Theme.of(context).textTheme.titleLarge,
             ),
           ),
-          IconButton(
-            onPressed: controller.editNote,
+          GlassIconButton(
+            icon: Icons.edit_outlined,
             tooltip: AppStrings.tooltipEdit,
-            icon: const Icon(Icons.edit_outlined),
+            onPressed: controller.editNote,
           ),
-          IconButton(
-            onPressed: () => _confirmDelete(context),
+          const SizedBox(width: AppDimensions.spaceXs),
+          GlassIconButton(
+            icon: Icons.delete_outline_rounded,
             tooltip: AppStrings.tooltipDelete,
-            icon: const Icon(
-              Icons.delete_outline_rounded,
-              color: AppColors.accent,
-            ),
+            tone: GlassIconButtonTone.danger,
+            onPressed: () => _confirmDelete(context),
           ),
         ],
       ),

@@ -4,6 +4,7 @@ import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_durations.dart';
 import '../../core/constants/app_sizes.dart';
 import '../../core/constants/app_strings.dart';
+import '../../core/theme/app_theme.dart';
 import 'glass_card.dart';
 
 /// Glass search input with a search icon and an animated clear button.
@@ -61,9 +62,9 @@ class SearchBarField extends StatelessWidget {
                 textInputAction: TextInputAction.search,
                 maxLines: 1,
                 style: theme.textTheme.bodyLarge,
-                decoration: InputDecoration.collapsed(
+                decoration: AppTheme.borderlessDecoration(
+                  context,
                   hintText: hintText,
-                  hintStyle: theme.inputDecorationTheme.hintStyle,
                 ),
               ),
             ),

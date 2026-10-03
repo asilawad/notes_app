@@ -13,6 +13,28 @@ import 'glass_theme.dart';
 abstract final class AppTheme {
   static final ThemeData light = _buildLight();
 
+  /// Borderless decoration for fields that sit inside a glass container,
+  /// where the container already draws the surface (for example the search bar).
+  /// Kept here so widgets never define input styling themselves.
+  static InputDecoration borderlessDecoration(
+    BuildContext context, {
+    required String hintText,
+  }) {
+    return InputDecoration(
+      hintText: hintText,
+      hintStyle: Theme.of(context).inputDecorationTheme.hintStyle,
+      isCollapsed: true,
+      filled: false,
+      contentPadding: EdgeInsets.zero,
+      border: InputBorder.none,
+      enabledBorder: InputBorder.none,
+      focusedBorder: InputBorder.none,
+      disabledBorder: InputBorder.none,
+      errorBorder: InputBorder.none,
+      focusedErrorBorder: InputBorder.none,
+    );
+  }
+
   static ThemeData _buildLight() {
     final TextTheme textTheme = AppTextTheme.light;
 
