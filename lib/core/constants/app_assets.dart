@@ -9,8 +9,7 @@ abstract final class AppAssets {
   // Branding
   // ---------------------------------------------------------------------------
   /// App logo shown on the splash screen.
-  static const String appLogo = '$_imagesDir/app_logo.png';
-
+  static const String appLogo = '$_imagesDir/app_icon.png';
   // ---------------------------------------------------------------------------
   // Illustrations
   // ---------------------------------------------------------------------------
