@@ -140,6 +140,10 @@ abstract final class AppDimensions {
   static const double buttonMinWidth = 120;
   static const double iconButtonSize = 44;
   static const double iconButtonIconSize = 20;
+  static const double pinIconSize = 20;
+  static const double splashLogoSize = 120;
+  static const double splashFallbackIconSize = 56;
+  static const double splashScaleBegin = 0.85;
 
   // ---------------------------------------------------------------------------
   // Note tiles
@@ -176,14 +180,12 @@ abstract final class AppDimensions {
   static const double contentMaxWidth = 720;
 
   // ---------------------------------------------------------------------------
-  // Splash & empty state
+  // Empty state
   // ---------------------------------------------------------------------------
-  static const double splashLogoSize = 120;
   static const double emptyStateImageSize = 180;
   static const double emptyStateIconSize = 64;
   static const double errorStateCircleSize = 120;
   static const double errorStateIconSize = 48;
-  static const double splashFallbackIconSize = 56;
 
   // ---------------------------------------------------------------------------
   // Decorative background blobs
@@ -197,7 +199,6 @@ abstract final class AppDimensions {
   // Animation offsets
   // ---------------------------------------------------------------------------
   static const double listItemSlideOffset = 24;
-  static const double splashScaleBegin = 0.85;
 
   // ---------------------------------------------------------------------------
   // Breakpoints & responsive grid

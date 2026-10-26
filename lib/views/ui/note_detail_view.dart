@@ -62,6 +62,20 @@ class NoteDetailView extends GetView<NoteDetailController> {
               style: Theme.of(context).textTheme.titleLarge,
             ),
           ),
+          Obx(() {
+            final NoteModel? note = controller.note.value;
+            final bool isPinned = note?.isPinned ?? false;
+            return GlassIconButton(
+              icon: isPinned
+                  ? Icons.push_pin_rounded
+                  : Icons.push_pin_outlined,
+              tooltip: isPinned
+                  ? AppStrings.tooltipUnpinNote
+                  : AppStrings.tooltipPinNote,
+              onPressed: note == null ? null : controller.togglePin,
+            );
+          }),
+          const SizedBox(width: AppDimensions.spaceXs),
           GlassIconButton(
             icon: Icons.edit_outlined,
             tooltip: AppStrings.tooltipEdit,

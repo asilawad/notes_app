@@ -16,6 +16,8 @@ abstract final class FirestoreConstants {
   static const String fieldCategory = 'category';
   static const String fieldCreatedAt = 'createdAt';
   static const String fieldUpdatedAt = 'updatedAt';
+  static const String fieldIsPinned = 'isPinned';
+  static const String fieldPinnedAt = 'pinnedAt';
 
   // ---------------------------------------------------------------------------
   // Query settings

@@ -8,13 +8,15 @@ import '../core/constants/app_strings.dart';
 import '../core/utils/app_snackbar.dart';
 import '../data/models/note_model.dart';
 import '../data/repositories/note_repository.dart';
+import 'home_controller.dart';
 
 /// State and actions of the note details screen.
 ///
 /// The note passed in `Get.arguments` is only the first snapshot (so the
 /// Hero transition has content on its first frame). The controller then
 /// watches the note by its id, so edits made in the form show up here
-/// immediately, with no refetch and no dependency on `HomeController`.
+/// immediately, with no refetch. Pin actions are delegated to
+/// `HomeController` so the pin limit stays consistent across screens.
 class NoteDetailController extends GetxController {
   NoteDetailController({NoteRepository? repository})
     : _repository = repository ?? Get.find<NoteRepository>();
@@ -124,6 +126,13 @@ class NoteDetailController extends GetxController {
     final NoteModel? current = note.value;
     if (current == null) return;
     Get.toNamed<void>(AppRoutes.noteForm, arguments: current);
+  }
+
+  /// Uses the home controller so the pin limit is consistent on both screens.
+  void togglePin() {
+    final NoteModel? current = note.value;
+    if (current == null) return;
+    Get.find<HomeController>().togglePin(current);
   }
 
   /// Deletes the note, returns to the previous screen and offers Undo.

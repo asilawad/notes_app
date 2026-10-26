@@ -33,7 +33,6 @@ class SplashController extends GetxController
       duration: AppDurations.splashAnimation,
     );
 
-    // The entrance curve never overshoots 1, so it is safe for opacity.
     final Animation<double> curved = CurvedAnimation(
       parent: _animationController,
       curve: AppCurves.entrance,
@@ -50,7 +49,6 @@ class SplashController extends GetxController
   void onReady() {
     super.onReady();
 
-    // Respect the system "reduce motion" setting: show the logo immediately.
     final bool reduceMotion = WidgetsBinding
         .instance
         .platformDispatcher

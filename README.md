@@ -1,4 +1,4 @@
-# Notes App
+# Smart Notes
 
 A modern notes app built with **Flutter**, **GetX** and **Cloud Firestore**, featuring a soft glassmorphism UI, live search, category and date filters, and real-time sync.
 
@@ -14,6 +14,7 @@ A modern notes app built with **Flutter**, **GetX** and **Cloud Firestore**, fea
 - **Live search** with a 300 ms debounce
 - **Category filters** (Personal, Work, Ideas, Important) and **date-range filters** (Today, Last 7 days, Last 30 days)
 - **List and grid layouts**, switchable with one tap
+- **Pin up to three notes**, shown first and ordered by pin time
 - **Delete with undo**: a confirmation dialog, then an undo snackbar
 - **One form for create and edit**, with validation and a character counter
 - **Glassmorphism design** with a soft light palette, backdrop blur and micro-animations (Hero transitions, staggered list entry, skeleton loading)
@@ -42,7 +43,7 @@ lib/
 │   ├── app.dart                     # root GetMaterialApp
 │   └── routes/                      # app_routes.dart, app_pages.dart
 ├── bindings/                        # initial, home, note_detail, note_form
-├── controllers/                     # splash, home, note_detail, note_form
+├── controllers/                     # home, note_detail, note_form
 ├── core/
 │   ├── constants/                   # app_colors, app_sizes, app_strings,
 │   │                                # app_durations, app_assets, firestore_constants
@@ -54,7 +55,7 @@ lib/
 │   ├── repositories/                # note_repository (interface)
 │   └── services/                    # note_service (Firestore implementation)
 └── views/
-    ├── ui/                          # splash, home, note_detail, note_form screens
+    ├── ui/                          # home, note_detail, note_form screens
     └── widgets/                     # glass_card, glass_icon_button, app_button,
                                      # custom_text_field, search_bar_field,
                                      # filter_chip_group, category_badge, note_tile,
@@ -79,6 +80,8 @@ Collection: `notes`
 | `category` | string | `personal`, `work`, `ideas` or `important` |
 | `createdAt` | timestamp | set by the server, never changed |
 | `updatedAt` | timestamp | set by the server on every edit |
+| `isPinned` | boolean | whether the note is pinned |
+| `pinnedAt` | timestamp or null | set by the server when pinned |
 
 ## Getting started
 
@@ -130,7 +133,6 @@ The app has been tested on Chrome (web).
 
 - Firebase Authentication with per-user notes
 - Arabic / English localization (all strings are already centralized in `AppStrings`)
-- Pinned notes and sorting options
 - Unit tests for controllers (the repository interface makes them easy to mock)
 
 ## Project conventions

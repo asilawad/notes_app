@@ -211,6 +211,9 @@ class HomeView extends GetView<HomeController> {
     final List<NoteModel> notes = controller.filteredNotes.toList(
       growable: false,
     );
+    final bool hasPinnedNotes = notes.any(
+      (NoteModel note) => note.isPinned,
+    );
 
     Widget buildTile(int index) {
       final NoteModel note = notes[index];
@@ -224,6 +227,7 @@ class HomeView extends GetView<HomeController> {
           note: note,
           layout: layout,
           onTap: () => controller.openNote(note),
+          onTogglePin: () => controller.togglePin(note),
           onLongPress: () => _confirmDelete(context, note),
         ),
       );
@@ -238,30 +242,71 @@ class HomeView extends GetView<HomeController> {
       return index < 0 ? null : index;
     }
 
+    final Widget notesSliver;
     if (layout == NoteTileLayout.grid) {
-      return GridView.builder(
-        padding: AppDimensions.listBottomPadding,
-        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+      notesSliver = SliverGrid(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: context.gridColumns,
           mainAxisSpacing: AppDimensions.noteGridSpacing,
           crossAxisSpacing: AppDimensions.noteGridSpacing,
           childAspectRatio: AppDimensions.noteGridAspectRatio,
         ),
-        itemCount: notes.length,
-        findChildIndexCallback: findIndex,
-        itemBuilder: (BuildContext context, int index) => buildTile(index),
+        delegate: SliverChildBuilderDelegate(
+          (BuildContext context, int index) => buildTile(index),
+          childCount: notes.length,
+          findChildIndexCallback: findIndex,
+        ),
+      );
+    } else {
+      notesSliver = SliverList(
+        delegate: SliverChildBuilderDelegate(
+          (BuildContext context, int itemIndex) {
+            if (itemIndex.isOdd) {
+              return const SizedBox(height: AppDimensions.noteListSpacing);
+            }
+            return buildTile(itemIndex ~/ 2);
+          },
+          childCount: notes.length * 2 - 1,
+          findChildIndexCallback: (Key key) {
+            final int? index = findIndex(key);
+            return index == null ? null : index * 2;
+          },
+        ),
       );
     }
 
-    return ListView.separated(
-      padding: AppDimensions.listBottomPadding,
+    return CustomScrollView(
       keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-      itemCount: notes.length,
-      findItemIndexCallback: findIndex,
-      separatorBuilder: (BuildContext context, int index) =>
-          const SizedBox(height: AppDimensions.noteListSpacing),
-      itemBuilder: (BuildContext context, int index) => buildTile(index),
+      slivers: <Widget>[
+        if (hasPinnedNotes)
+          SliverPadding(
+            padding: const EdgeInsets.only(
+              left: AppDimensions.spaceMd,
+              right: AppDimensions.spaceMd,
+              bottom: AppDimensions.spaceSm,
+            ),
+            sliver: SliverToBoxAdapter(
+              child: Row(
+                children: <Widget>[
+                  Icon(
+                    Icons.push_pin_rounded,
+                    size: AppDimensions.iconSm,
+                    color: Theme.of(context).colorScheme.primary,
+                  ),
+                  const SizedBox(width: AppDimensions.spaceXxs),
+                  Text(
+                    AppStrings.pinnedSection,
+                    style: Theme.of(context).textTheme.titleSmall,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        SliverPadding(
+          padding: AppDimensions.listBottomPadding,
+          sliver: notesSliver,
+        ),
+      ],
     );
   }
 

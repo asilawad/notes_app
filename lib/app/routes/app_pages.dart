@@ -3,8 +3,8 @@ import 'package:get/get.dart';
 import '../../bindings/home_binding.dart';
 import '../../bindings/note_detail_binding.dart';
 import '../../bindings/note_form_binding.dart';
-import '../../controllers/splash_controller.dart';
 import '../../core/constants/app_durations.dart';
+import '../../controllers/splash_controller.dart';
 import '../../views/ui/home_view.dart';
 import '../../views/ui/note_detail_view.dart';
 import '../../views/ui/note_form_view.dart';
@@ -16,9 +16,6 @@ import 'app_routes.dart';
 /// Passed to `GetMaterialApp(getPages: AppPages.pages)`.
 abstract final class AppPages {
   static final List<GetPage<dynamic>> pages = <GetPage<dynamic>>[
-    // The plan has no `splash_binding.dart`, so the splash controller is
-    // registered inline. It is created when the screen opens and removed
-    // when the route is replaced by home.
     GetPage<dynamic>(
       name: AppRoutes.splash,
       page: SplashView.new,

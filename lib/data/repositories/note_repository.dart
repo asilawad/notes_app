@@ -32,6 +32,9 @@ abstract interface class NoteRepository {
   /// Updates the editable fields of an existing note.
   Future<void> updateNote(NoteModel note);
 
+  /// Updates only the pin fields of the note.
+  Future<void> togglePin(String id, bool isPinned);
+
   /// Permanently deletes the note with the given [id].
   Future<void> deleteNote(String id);
 

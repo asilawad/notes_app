@@ -9,12 +9,12 @@ abstract final class AppDurations {
   // Splash
   // ---------------------------------------------------------------------------
   /// Fade and scale entry animation of the logo.
-  static const Duration splashAnimation = Duration(milliseconds: 1200);
+  static const Duration splashAnimation = Duration(milliseconds: 700);
 
-  /// Total time on the splash screen before navigating to Home.
   /// Must stay greater than [splashAnimation].
-  static const Duration splashTotal = Duration(milliseconds: 2200);
+  static const Duration splashTotal = Duration(milliseconds: 1200);
 
+  // ---------------------------------------------------------------------------
   // ---------------------------------------------------------------------------
   // Navigation
   // ---------------------------------------------------------------------------

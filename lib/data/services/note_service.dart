@@ -63,6 +63,18 @@ class NoteService implements NoteRepository {
   }
 
   @override
+  Future<void> togglePin(String id, bool isPinned) {
+    return _guard<void>(
+      () => _notes.doc(id).update(<String, dynamic>{
+        FirestoreConstants.fieldIsPinned: isPinned,
+        FirestoreConstants.fieldPinnedAt: isPinned
+            ? FieldValue.serverTimestamp()
+            : null,
+      }),
+    );
+  }
+
+  @override
   Future<void> deleteNote(String id) {
     return _guard<void>(() => _notes.doc(id).delete());
   }

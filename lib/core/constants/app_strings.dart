@@ -6,7 +6,7 @@ abstract final class AppStrings {
   // ---------------------------------------------------------------------------
   // App
   // ---------------------------------------------------------------------------
-  static const String appName = 'Notes';
+  static const String appName = 'Smart Notes';
   static const String splashTagline = 'Capture ideas. Stay organized.';
 
   // ---------------------------------------------------------------------------
@@ -15,6 +15,9 @@ abstract final class AppStrings {
   static const String homeTitle = 'My Notes';
   static const String searchHint = 'Search notes...';
   static String notesCount(int count) => count == 1 ? '1 note' : '$count notes';
+  static const String pinnedSection = 'Pinned';
+  static const String pinLimitReached =
+      'You can pin up to 3 notes. Unpin one to pin this.';
 
   // ---------------------------------------------------------------------------
   // Filters
@@ -115,6 +118,8 @@ abstract final class AppStrings {
   static const String tooltipBack = 'Back';
   static const String tooltipEdit = 'Edit note';
   static const String tooltipDelete = 'Delete note';
+  static const String tooltipPinNote = 'Pin note';
+  static const String tooltipUnpinNote = 'Unpin note';
   static const String tooltipClearSearch = 'Clear search';
   static const String tooltipGridView = 'Grid view';
   static const String tooltipListView = 'List view';

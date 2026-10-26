@@ -33,12 +33,14 @@ class NoteTile extends StatelessWidget {
     super.key,
     required this.note,
     required this.onTap,
+    required this.onTogglePin,
     this.onLongPress,
     this.layout = NoteTileLayout.list,
   });
 
   final NoteModel note;
   final VoidCallback onTap;
+  final VoidCallback onTogglePin;
   final VoidCallback? onLongPress;
   final NoteTileLayout layout;
 
@@ -70,13 +72,31 @@ class NoteTile extends StatelessWidget {
           mainAxisSize: _isGrid ? MainAxisSize.max : MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(
-              title,
-              maxLines: _isGrid
-                  ? AppDimensions.noteGridTitleMaxLines
-                  : AppDimensions.noteListTitleMaxLines,
-              overflow: TextOverflow.ellipsis,
-              style: textTheme.titleMedium,
+            Row(
+              children: <Widget>[
+                Expanded(
+                  child: Text(
+                    title,
+                    maxLines: _isGrid
+                        ? AppDimensions.noteGridTitleMaxLines
+                        : AppDimensions.noteListTitleMaxLines,
+                    overflow: TextOverflow.ellipsis,
+                    style: textTheme.titleMedium,
+                  ),
+                ),
+                IconButton(
+                  onPressed: onTogglePin,
+                  tooltip: note.isPinned
+                      ? AppStrings.tooltipUnpinNote
+                      : AppStrings.tooltipPinNote,
+                  icon: Icon(
+                    note.isPinned
+                        ? Icons.push_pin_rounded
+                        : Icons.push_pin_outlined,
+                    size: AppDimensions.pinIconSize,
+                  ),
+                ),
+              ],
             ),
             const SizedBox(height: AppDimensions.spaceXs),
             if (_isGrid) Expanded(child: preview) else preview,

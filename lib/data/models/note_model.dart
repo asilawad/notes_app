@@ -14,6 +14,8 @@ class NoteModel {
     required this.category,
     required this.createdAt,
     required this.updatedAt,
+    this.isPinned = false,
+    this.pinnedAt,
   });
 
   /// Creates a not-yet-saved note. The [id] is assigned by Firestore on save,
@@ -31,6 +33,7 @@ class NoteModel {
       category: category,
       createdAt: now,
       updatedAt: now,
+      isPinned: false,
     );
   }
 
@@ -59,6 +62,8 @@ class NoteModel {
       ),
       createdAt: createdAt,
       updatedAt: updatedAt,
+      isPinned: map[FirestoreConstants.fieldIsPinned] == true,
+      pinnedAt: _parseDate(map[FirestoreConstants.fieldPinnedAt]),
     );
   }
 
@@ -68,12 +73,29 @@ class NoteModel {
   final NoteCategory category;
   final DateTime createdAt;
   final DateTime updatedAt;
+  final bool isPinned;
+  final DateTime? pinnedAt;
 
   /// True for a note that has not been saved to Firestore yet.
   bool get isNew => id.isEmpty;
 
   /// Shared Hero tag between the list tile and the details screen.
   String get heroTag => 'note-$id';
+
+  /// Serializes the current note values without server-side sentinels.
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      FirestoreConstants.fieldTitle: title,
+      FirestoreConstants.fieldContent: content,
+      FirestoreConstants.fieldCategory: category.key,
+      FirestoreConstants.fieldCreatedAt: Timestamp.fromDate(createdAt),
+      FirestoreConstants.fieldUpdatedAt: Timestamp.fromDate(updatedAt),
+      FirestoreConstants.fieldIsPinned: isPinned,
+      FirestoreConstants.fieldPinnedAt: pinnedAt == null
+          ? null
+          : Timestamp.fromDate(pinnedAt!),
+    };
+  }
 
   /// Fields written when a note is created. Both timestamps are set by the
   /// server, so device clock drift never affects ordering.
@@ -84,6 +106,10 @@ class NoteModel {
       FirestoreConstants.fieldCategory: category.key,
       FirestoreConstants.fieldCreatedAt: FieldValue.serverTimestamp(),
       FirestoreConstants.fieldUpdatedAt: FieldValue.serverTimestamp(),
+      FirestoreConstants.fieldIsPinned: isPinned,
+      FirestoreConstants.fieldPinnedAt: pinnedAt == null
+          ? null
+          : Timestamp.fromDate(pinnedAt!),
     };
   }
 
@@ -106,6 +132,10 @@ class NoteModel {
       FirestoreConstants.fieldCategory: category.key,
       FirestoreConstants.fieldCreatedAt: Timestamp.fromDate(createdAt),
       FirestoreConstants.fieldUpdatedAt: Timestamp.fromDate(updatedAt),
+      FirestoreConstants.fieldIsPinned: isPinned,
+      FirestoreConstants.fieldPinnedAt: pinnedAt == null
+          ? null
+          : Timestamp.fromDate(pinnedAt!),
     };
   }
 
@@ -116,6 +146,9 @@ class NoteModel {
     NoteCategory? category,
     DateTime? createdAt,
     DateTime? updatedAt,
+    bool? isPinned,
+    DateTime? pinnedAt,
+    bool clearPinnedAt = false,
   }) {
     return NoteModel(
       id: id ?? this.id,
@@ -124,6 +157,8 @@ class NoteModel {
       category: category ?? this.category,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
+      isPinned: isPinned ?? this.isPinned,
+      pinnedAt: clearPinnedAt ? null : pinnedAt ?? this.pinnedAt,
     );
   }
 
@@ -143,10 +178,21 @@ class NoteModel {
             other.content == content &&
             other.category == category &&
             other.createdAt == createdAt &&
-            other.updatedAt == updatedAt;
+            other.updatedAt == updatedAt &&
+            other.isPinned == isPinned &&
+            other.pinnedAt == pinnedAt;
   }
 
   @override
   int get hashCode =>
-      Object.hash(id, title, content, category, createdAt, updatedAt);
+      Object.hash(
+        id,
+        title,
+        content,
+        category,
+        createdAt,
+        updatedAt,
+        isPinned,
+        pinnedAt,
+      );
 }

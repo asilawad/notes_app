@@ -42,6 +42,8 @@ enum DateRangeFilter {
 /// State and actions of the home screen: live notes stream, debounced search,
 /// category and date filters, list/grid toggle, navigation and delete.
 class HomeController extends GetxController {
+  static const int maxPinnedNotes = 3;
+
   HomeController({NoteRepository? repository})
     : _repository = repository ?? Get.find<NoteRepository>();
 
@@ -190,15 +192,36 @@ class HomeController extends GetxController {
     final NoteCategory? category = selectedCategory.value;
     final DateTime? cutoff = selectedDateFilter.value.cutoff(DateTime.now());
 
-    filteredNotes.assignAll(
-      _notes.where((NoteModel note) {
+    final Map<String, int> originalOrder = <String, int>{
+      for (int index = 0; index < _notes.length; index++)
+        _notes[index].id: index,
+    };
+    final List<NoteModel> visibleNotes = _notes.where((NoteModel note) {
         if (category != null && note.category != category) return false;
         if (cutoff != null && note.updatedAt.isBefore(cutoff)) return false;
         if (query.isEmpty) return true;
         return note.title.toLowerCase().contains(query) ||
             note.content.toLowerCase().contains(query);
-      }),
-    );
+      }).toList();
+
+    visibleNotes.sort((NoteModel left, NoteModel right) {
+      if (left.isPinned != right.isPinned) return left.isPinned ? -1 : 1;
+      if (left.isPinned) {
+        final DateTime? leftPinnedAt = left.pinnedAt;
+        final DateTime? rightPinnedAt = right.pinnedAt;
+        if (leftPinnedAt != null && rightPinnedAt != null) {
+          final int byPinnedAt = rightPinnedAt.compareTo(leftPinnedAt);
+          if (byPinnedAt != 0) return byPinnedAt;
+        } else if (leftPinnedAt != null) {
+          return -1;
+        } else if (rightPinnedAt != null) {
+          return 1;
+        }
+      }
+      return originalOrder[left.id]!.compareTo(originalOrder[right.id]!);
+    });
+
+    filteredNotes.assignAll(visibleNotes);
   }
 
   // ---------------------------------------------------------------------------
@@ -213,6 +236,33 @@ class HomeController extends GetxController {
 
   void openNewNote() {
     Get.toNamed<void>(AppRoutes.noteForm);
+  }
+
+  /// Pins or unpins [note] without waiting for the Firestore write.
+  void togglePin(NoteModel note) {
+    final int noteIndex = _notes.indexWhere(
+      (NoteModel loadedNote) => loadedNote.id == note.id,
+    );
+    final bool currentlyPinned = noteIndex >= 0
+        ? _notes[noteIndex].isPinned
+        : note.isPinned;
+    final bool shouldPin = !currentlyPinned;
+
+    if (shouldPin &&
+        _notes.where((NoteModel item) => item.isPinned).length >=
+            maxPinnedNotes) {
+      AppSnackbar.error(AppStrings.pinLimitReached);
+      return;
+    }
+
+    unawaited(
+      _repository
+          .togglePin(note.id, shouldPin)
+          .catchError((Object error) {
+            debugPrint(error.toString());
+            AppSnackbar.error(AppStrings.genericError);
+          }),
+    );
   }
 
   // ---------------------------------------------------------------------------
