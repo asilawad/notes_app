@@ -141,9 +141,6 @@ abstract final class AppDimensions {
   static const double iconButtonSize = 44;
   static const double iconButtonIconSize = 20;
   static const double pinIconSize = 20;
-  static const double splashLogoSize = 120;
-  static const double splashFallbackIconSize = 56;
-  static const double splashScaleBegin = 0.85;
 
   // ---------------------------------------------------------------------------
   // Note tiles

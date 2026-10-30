@@ -1,5 +1,9 @@
 flutter_native_splash:
-  color: "#EEF6FC"
+  color: "#FFFFFF"
+  image: assets/images/splash_logo.png
+  branding: assets/images/splash_branding.png
+  branding_mode: bottom
   android_12:
-    color: "#EEF6FC"
-    image: assets/images/splash_empty.png
+    color: "#FFFFFF"
+    image: assets/images/splash_logo.png
+    branding: assets/images/splash_branding.png

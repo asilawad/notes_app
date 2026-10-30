@@ -4,11 +4,9 @@ import '../../bindings/home_binding.dart';
 import '../../bindings/note_detail_binding.dart';
 import '../../bindings/note_form_binding.dart';
 import '../../core/constants/app_durations.dart';
-import '../../controllers/splash_controller.dart';
 import '../../views/ui/home_view.dart';
 import '../../views/ui/note_detail_view.dart';
 import '../../views/ui/note_form_view.dart';
-import '../../views/ui/splash_view.dart';
 import 'app_routes.dart';
 
 /// Connects every route name to its screen, binding and transition.
@@ -16,16 +14,6 @@ import 'app_routes.dart';
 /// Passed to `GetMaterialApp(getPages: AppPages.pages)`.
 abstract final class AppPages {
   static final List<GetPage<dynamic>> pages = <GetPage<dynamic>>[
-    GetPage<dynamic>(
-      name: AppRoutes.splash,
-      page: SplashView.new,
-      binding: BindingsBuilder<dynamic>(() {
-        Get.lazyPut<SplashController>(SplashController.new);
-      }),
-      transition: Transition.fadeIn,
-      transitionDuration: AppDurations.pageTransition,
-      curve: AppCurves.entrance,
-    ),
     GetPage<dynamic>(
       name: AppRoutes.home,
       page: HomeView.new,

@@ -6,15 +6,6 @@ import 'package:flutter/animation.dart';
 /// defined here. Curves live in [AppCurves] in this same file.
 abstract final class AppDurations {
   // ---------------------------------------------------------------------------
-  // Splash
-  // ---------------------------------------------------------------------------
-  /// Fade and scale entry animation of the logo.
-  static const Duration splashAnimation = Duration(milliseconds: 700);
-
-  /// Must stay greater than [splashAnimation].
-  static const Duration splashTotal = Duration(milliseconds: 1200);
-
-  // ---------------------------------------------------------------------------
   // ---------------------------------------------------------------------------
   // Navigation
   // ---------------------------------------------------------------------------

@@ -7,7 +7,6 @@ abstract final class AppStrings {
   // App
   // ---------------------------------------------------------------------------
   static const String appName = 'Smart Notes';
-  static const String splashTagline = 'Capture ideas. Stay organized.';
 
   // ---------------------------------------------------------------------------
   // Home
